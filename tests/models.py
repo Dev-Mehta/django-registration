@@ -3,6 +3,8 @@ Custom user model for use in tests.
 
 """
 
+# SPDX-License-Identifier: BSD-3-Clause
+
 from django.contrib.auth.base_user import AbstractBaseUser
 from django.contrib.auth.models import UserManager
 from django.contrib.auth.validators import UnicodeUsernameValidator

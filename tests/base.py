@@ -3,6 +3,8 @@ Base classes for other test cases to inherit from.
 
 """
 
+# SPDX-License-Identifier: BSD-3-Clause
+
 import json
 from contextlib import contextmanager
 

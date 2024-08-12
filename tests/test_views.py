@@ -3,6 +3,8 @@ Tests for django-registration's built-in views.
 
 """
 
+# SPDX-License-Identifier: BSD-3-Clause
+
 import logging
 import sys
 

@@ -3,6 +3,8 @@ Base view classes for all registration workflows.
 
 """
 
+# SPDX-License-Identifier: BSD-3-Clause
+
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ImproperlyConfigured

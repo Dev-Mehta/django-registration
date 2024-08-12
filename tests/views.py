@@ -4,6 +4,8 @@ covered by the built-in workflows.
 
 """
 
+# SPDX-License-Identifier: BSD-3-Clause
+
 from django.urls import reverse_lazy
 
 from django_registration.backends.activation.views import ActivationView

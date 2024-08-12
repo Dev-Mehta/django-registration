@@ -1,4 +1,10 @@
-# -*- coding: utf-8 -*-
+"""
+No-op migration used for compatibility with older releases of django-registration.
+
+"""
+
+# SPDX-License-Identifier: BSD-3-Clause
+
 # pylint: disable=invalid-name
 from __future__ import unicode_literals
 
@@ -16,6 +22,12 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
+    """
+    No-op migration used to allow older installations to run ``manage.py migrate``
+    successfully.
+
+    """
+
     dependencies = [migrations.swappable_dependency(settings.AUTH_USER_MODEL)]
 
     operations = [

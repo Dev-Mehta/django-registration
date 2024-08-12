@@ -4,6 +4,8 @@ workflow.
 
 """
 
+# SPDX-License-Identifier: BSD-3-Clause
+
 from django.contrib.auth import authenticate, get_user_model, login
 from django.urls import reverse_lazy
 

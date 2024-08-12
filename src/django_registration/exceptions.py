@@ -3,6 +3,8 @@ Exception classes used in registration workflows.
 
 """
 
+# SPDX-License-Identifier: BSD-3-Clause
+
 
 class RegistrationError(Exception):
     """

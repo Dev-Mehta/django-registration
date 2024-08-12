@@ -11,6 +11,8 @@ run a single task, use ``nox -s`` with the name of that task.
 
 """
 
+# SPDX-License-Identifier: BSD-3-Clause
+
 import os
 import pathlib
 import shutil

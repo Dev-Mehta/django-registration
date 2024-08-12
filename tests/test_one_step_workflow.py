@@ -3,6 +3,8 @@ Tests for the one-step registration workflow.
 
 """
 
+# SPDX-License-Identifier: BSD-3-Clause
+
 from django.apps import apps
 from django.contrib.auth import get_user_model
 from django.test import modify_settings, override_settings

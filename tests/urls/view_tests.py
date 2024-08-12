@@ -6,6 +6,8 @@ development environment.
 
 """
 
+# SPDX-License-Identifier: BSD-3-Clause
+
 from django.urls import path
 from django.views.generic.base import TemplateView
 

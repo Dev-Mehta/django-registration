@@ -4,6 +4,8 @@ django-registration's various user-registration form classes.
 
 """
 
+# SPDX-License-Identifier: BSD-3-Clause
+
 # pylint: disable=implicit-str-concat
 import re
 import unicodedata

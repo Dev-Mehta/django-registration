@@ -4,6 +4,8 @@ Exercise django-registration's built-in form classes.
 
 """
 
+# SPDX-License-Identifier: BSD-3-Clause
+
 import uuid
 
 from django.contrib.auth import get_user_model
