@@ -109,7 +109,7 @@ def tests_with_coverage(session: nox.Session, django: str) -> None:
 # -----------------------------------------------------------------------------------
 
 
-@nox.session(python=["3.11"], tags=["docs"])
+@nox.session(python=["3.12"], tags=["docs"])
 def docs_build(session: nox.Session) -> None:
     """
     Build the package's documentation as HTML.
@@ -131,7 +131,7 @@ def docs_build(session: nox.Session) -> None:
     clean()
 
 
-@nox.session(python=["3.11"], tags=["docs"])
+@nox.session(python=["3.12"], tags=["docs"])
 def docs_docstrings(session: nox.Session) -> None:
     """
     Enforce the presence of docstrings on all modules, classes, functions, and
@@ -154,7 +154,7 @@ def docs_docstrings(session: nox.Session) -> None:
     clean()
 
 
-@nox.session(python=["3.11"], tags=["docs"])
+@nox.session(python=["3.12"], tags=["docs"])
 def docs_spellcheck(session: nox.Session) -> None:
     """
     Spell-check the package's documentation.
@@ -189,7 +189,7 @@ def docs_spellcheck(session: nox.Session) -> None:
 # -----------------------------------------------------------------------------------
 
 
-@nox.session(python=["3.11"], tags=["formatters"])
+@nox.session(python=["3.12"], tags=["formatters"])
 def format_black(session: nox.Session) -> None:
     """
     Check code formatting with Black.
@@ -211,7 +211,7 @@ def format_black(session: nox.Session) -> None:
     clean()
 
 
-@nox.session(python=["3.11"], tags=["formatters"])
+@nox.session(python=["3.12"], tags=["formatters"])
 def format_isort(session: nox.Session) -> None:
     """
     Check code formating with Black.
@@ -237,7 +237,7 @@ def format_isort(session: nox.Session) -> None:
 # -----------------------------------------------------------------------------------
 
 
-@nox.session(python=["3.11"], tags=["linters", "security"])
+@nox.session(python=["3.12"], tags=["linters", "security"])
 def lint_bandit(session: nox.Session) -> None:
     """
     Lint code with the Bandit security analyzer.
@@ -258,7 +258,7 @@ def lint_bandit(session: nox.Session) -> None:
     clean()
 
 
-@nox.session(python=["3.11"], tags=["linters"])
+@nox.session(python=["3.12"], tags=["linters"])
 def lint_flake8(session: nox.Session) -> None:
     """
     Lint code with flake8.
@@ -278,7 +278,7 @@ def lint_flake8(session: nox.Session) -> None:
     clean()
 
 
-@nox.session(python=["3.11"], tags=["linters"])
+@nox.session(python=["3.12"], tags=["linters"])
 def lint_pylint(session: nox.Session) -> None:
     """
     Lint code with Pyling.
@@ -296,7 +296,7 @@ def lint_pylint(session: nox.Session) -> None:
 # -----------------------------------------------------------------------------------
 
 
-@nox.session(python=["3.11"], tags=["packaging"])
+@nox.session(python=["3.12"], tags=["packaging"])
 def package_build(session: nox.Session) -> None:
     """
     Check that the package builds.
@@ -308,7 +308,7 @@ def package_build(session: nox.Session) -> None:
     session.run(f"{session.bin}/python{session.python}", "-Im", "build")
 
 
-@nox.session(python=["3.11"], tags=["packaging"])
+@nox.session(python=["3.12"], tags=["packaging"])
 def package_description(session: nox.Session) -> None:
     """
     Check that the package description will render on the Python Package Index.
@@ -336,7 +336,7 @@ def package_description(session: nox.Session) -> None:
     clean()
 
 
-@nox.session(python=["3.11"], tags=["packaging"])
+@nox.session(python=["3.12"], tags=["packaging"])
 def package_manifest(session: nox.Session) -> None:
     """
     Check that the set of files in the package matches the set under version control.
@@ -352,7 +352,7 @@ def package_manifest(session: nox.Session) -> None:
     clean()
 
 
-@nox.session(python=["3.11"], tags=["packaging"])
+@nox.session(python=["3.12"], tags=["packaging"])
 def package_pyroma(session: nox.Session) -> None:
     """
     Check package quality with pyroma.
@@ -368,7 +368,7 @@ def package_pyroma(session: nox.Session) -> None:
     clean()
 
 
-@nox.session(python=["3.11"], tags=["packaging"])
+@nox.session(python=["3.12"], tags=["packaging"])
 def package_wheel(session: nox.Session) -> None:
     """
     Check the built wheel package for common errors.
