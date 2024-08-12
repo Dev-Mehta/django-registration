@@ -48,10 +48,11 @@ did not receive a copy of this file, you can view it online at
 What versions of Django and Python are supported?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-As of django-registration |release|, Django 3.2 and 4.0 are supported, on
-Python 3.7 (Django 3.2 only), 3.8, 3.9, and 3.10. Note that Django 3.2's
-support for Python 3.10 was added in Django 3.2.9, so you may experience issues
-with Python 3.10 and earlier Django 3.2 versions.
+django-registration |release| supports Django 4.2, 5.0, and 5.1, and Python 3.8
+through 3.12. See `Django's Python support matrix
+<https://docs.djangoproject.com/en/dev/faq/install/#what-python-version-can-i-use-with-django>`_
+for details of which Python versions are compatible with each version of
+Django.
 
 
 I found a bug or want to make an improvement!

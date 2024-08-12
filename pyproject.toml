@@ -10,9 +10,9 @@ classifiers = [
   "Development Status :: 5 - Production/Stable",
   "Environment :: Web Environment",
   "Framework :: Django",
-  "Framework :: Django :: 3.2",
   "Framework :: Django :: 4.2",
   "Framework :: Django :: 5.0",
+  "Framework :: Django :: 5.1",
   "Intended Audience :: Developers",
   "License :: OSI Approved :: BSD License",
   "Operating System :: OS Independent",
@@ -28,7 +28,7 @@ classifiers = [
 name = "django-registration"
 description = "An extensible user-registration application for Django."
 dependencies = [
-  "Django>=3.2,!=4.0.*,!=4.1.*",
+  "Django>=4.2",
   "confusable_homoglyphs~=3.0"
 ]
 dynamic = ["version"]

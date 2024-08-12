@@ -55,18 +55,13 @@ def clean(paths: typing.Iterable[pathlib.Path] = ARTIFACT_PATHS) -> None:
 @nox.parametrize(
     "python,django",
     [
-        # Python/Django testing matrix. Tests Django 3.2, 4.2, 5.0, on Python 3.8
-        # through 3.11, skipping unsupported combinations.
+        # Python/Django testing matrix. Tests Django 4.2, 5.0, 5.1 on Python 3.8 through
+        # 3.12, skipping unsupported combinations.
         (python, django)
         for python in ["3.8", "3.9", "3.10", "3.11", "3.12"]
-        for django in ["3.2", "4.2", "5.0"]
+        for django in ["4.2", "5.0", "5.1"]
         if (python, django)
-        not in [
-            ("3.11", "3.2"),
-            ("3.12", "3.2"),
-            ("3.8", "5.0"),
-            ("3.9", "5.0"),
-        ]
+        not in [("3.8", "5.0"), ("3.9", "5.0"), ("3.8", "5.1"), ("3.9", "5.1")]
     ],
 )
 def tests_with_coverage(session: nox.Session, django: str) -> None:
