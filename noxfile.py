@@ -290,6 +290,7 @@ def lint_pylint(session: nox.Session) -> None:
     session.install("pylint", "pylint-django")
     session.run(f"python{session.python}", "-Im", "pylint", "--version")
     session.run(f"python{session.python}", "-Im", "pylint", "src/", "tests/")
+    clean()
 
 
 # Packaging checks.
