@@ -1,6 +1,5 @@
 """
-URLs used to test the activation workflow with a custom user
-model.
+URLs used to test the activation workflow with a custom user model.
 
 You should not use these in any sort of real environment.
 

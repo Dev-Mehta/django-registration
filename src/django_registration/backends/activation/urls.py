@@ -1,6 +1,6 @@
 """
-URLconf for registration and activation, using django-registration's
-HMAC activation workflow.
+URLconf for registration and activation, using django-registration's HMAC activation
+workflow.
 
 """
 

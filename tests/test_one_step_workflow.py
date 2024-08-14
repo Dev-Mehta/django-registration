@@ -64,8 +64,8 @@ class OneStepWorkflowCustomUserTests(OneStepWorkflowViewTests):
 
     def test_custom_user_configured(self):
         """
-        Asserts that the user model in use is the custom user model
-        defined in this test suite.
+        Asserts that the user model in use is the custom user model defined in this
+        test suite.
 
         """
         user_model = get_user_model()

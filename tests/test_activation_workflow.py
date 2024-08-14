@@ -61,8 +61,8 @@ class ActivationBackendViewTests(ActivationTestCase):
 
     def test_repeat_activation(self):
         """
-        Once activated, attempting to re-activate an account (even
-        with a valid key) does nothing.
+        Once activated, attempting to re-activate an account (even with a valid key)
+        does nothing.
 
         """
         user_model = get_user_model()
@@ -135,11 +135,10 @@ class ActivationBackendViewTests(ActivationTestCase):
             "params": {"activation_key": activation_key},
         }
 
-    # The timestamp calculation will error if USE_TZ=True, due to
-    # trying to subtract a naive from an aware datetime. Since time
-    # zones aren't relevant to the test, we just temporarily disable
-    # time-zone support rather than do the more complex dance of
-    # checking the setting and forcing everything to naive or aware.
+    # The timestamp calculation will error if USE_TZ=True, due to trying to subtract a
+    # naive from an aware datetime. Since time zones aren't relevant to the test, we
+    # just temporarily disable time-zone support rather than do the more complex dance
+    # of checking the setting and forcing everything to naive or aware.
     @override_settings(USE_TZ=False)
     def test_activation_expired(self):
         """
@@ -150,17 +149,16 @@ class ActivationBackendViewTests(ActivationTestCase):
 
         self.client.post(reverse("django_registration_register"), data=self.valid_data)
 
-        # We need to create an activation key valid for the username,
-        # but with a timestamp > ACCOUNT_ACTIVATION_DAYS days in the
-        # past. This requires monkeypatching time.time() to return
-        # that timestamp, since TimestampSigner uses time.time().
+        # We need to create an activation key valid for the username, but with a
+        # timestamp > ACCOUNT_ACTIVATION_DAYS days in the past. This requires
+        # monkeypatching time.time() to return that timestamp, since TimestampSigner
+        # uses time.time().
         #
-        # On Python 3.3+ this is much easier because of the
-        # timestamp() method of datetime objects, but since
-        # django-registration has to run on Python 2.7, we manually
-        # calculate it using a timedelta between the signup date and
-        # the UNIX epoch, and patch time.time() temporarily to return
-        # a date (ACCOUNT_ACTIVATION_DAYS + 1) days in the past.
+        # On Python 3.3+ this is much easier because of the timestamp() method of
+        # datetime objects, but since django-registration has to run on Python 2.7, we
+        # manually calculate it using a timedelta between the signup date and the UNIX
+        # epoch, and patch time.time() temporarily to return a date
+        # (ACCOUNT_ACTIVATION_DAYS + 1) days in the past.
         user = user_model.objects.get(**self.user_lookup_kwargs)
         joined_timestamp = (
             user.date_joined - datetime.datetime.fromtimestamp(0)
@@ -199,8 +197,7 @@ class ActivationBackendViewTests(ActivationTestCase):
 
     def test_nonexistent_activation(self):
         """
-        A nonexistent username in an activation key will fail to
-        activate.
+        A nonexistent username in an activation key will fail to activate.
 
         """
         activation_key = signing.dumps(obj="parrot", salt=REGISTRATION_SALT)
@@ -263,8 +260,8 @@ class ActivationBackendCustomUserTests(ActivationBackendViewTests):
 
     def test_custom_user_configured(self):
         """
-        Asserts that the user model in use is the custom user model
-        defined in this test suite.
+        Asserts that the user model in use is the custom user model defined in this
+        test suite.
 
         """
         user_model = get_user_model()

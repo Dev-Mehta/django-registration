@@ -1,6 +1,6 @@
 """
-Error messages, data and custom validation code used in
-django-registration's various user-registration form classes.
+Error messages, data and custom validation code used in django-registration's
+various user-registration form classes.
 
 """
 
@@ -16,13 +16,12 @@ from django.core.validators import EmailValidator, RegexValidator
 from django.utils.deconstruct import deconstructible
 from django.utils.translation import gettext_lazy as _
 
-CONFUSABLE = _("This name cannot be registered. " "Please choose a different name.")
+CONFUSABLE = _("This name cannot be registered. Please choose a different name.")
 CONFUSABLE_EMAIL = _(
-    "This email address cannot be registered. "
-    "Please supply a different email address."
+    "This email address cannot be registered. Please supply a different email address."
 )
 DUPLICATE_EMAIL = _(
-    "This email address is already in use. " "Please supply a different email address."
+    "This email address is already in use. Please supply a different email address."
 )
 DUPLICATE_USERNAME = _("A user with that username already exists.")
 FREE_EMAIL = _(
@@ -41,24 +40,22 @@ HTML5_EMAIL_RE = (
 )
 
 
-# Below we construct a large but non-exhaustive list of names which
-# users probably should not be able to register with, due to various
-# risks:
+# Below we construct a large but non-exhaustive list of names which users probably
+# should not be able to register with, due to various risks:
 #
-# * For a site which creates email addresses from username, important
-#   common addresses must be reserved.
+# * For a site which creates email addresses from username, important common addresses
+#   must be reserved.
 #
-# * For a site which creates subdomains from usernames, important
-#   common hostnames/domain names must be reserved.
+# * For a site which creates subdomains from usernames, important common
+#   hostnames/domain names must be reserved.
 #
-# * For a site which uses the username to generate a URL to the user's
-#   profile, common well-known filenames must be reserved.
+# * For a site which uses the username to generate a URL to the user's profile, common
+#   well-known filenames must be reserved.
 #
 # etc., etc.
 #
-# Credit for basic idea and most of the list to Geoffrey Thomas's blog
-# post about names to reserve:
-# https://ldpreload.com/blog/names-to-reserve
+# Credit for basic idea and most of the list to Geoffrey Thomas's blog post about names
+# to reserve: https://ldpreload.com/blog/names-to-reserve
 SPECIAL_HOSTNAMES = [
     # Hostnames with special/reserved meaning.
     "autoconfig",  # Thunderbird autoconfig
@@ -212,8 +209,7 @@ DEFAULT_RESERVED_NAMES = (
 @deconstructible
 class ReservedNameValidator:
     """
-    Validator which disallows many reserved names as form field
-    values.
+    Validator which disallows many reserved names as form field values.
 
     """
 
@@ -221,8 +217,8 @@ class ReservedNameValidator:
         self.reserved_names = reserved_names
 
     def __call__(self, value):
-        # GH issue 82: this validator only makes sense when the
-        # username field is a string type.
+        # GH issue 82: this validator only makes sense when the username field is a
+        # string type.
         if not isinstance(value, str):
             return
         if value in self.reserved_names or value.startswith(".well-known"):
@@ -277,12 +273,12 @@ class HTML5EmailValidator(RegexValidator):
 
 def validate_confusables(value):
     """
-    Validator which disallows 'dangerous' usernames likely to
-    represent homograph attacks.
+    Validator which disallows 'dangerous' usernames likely to represent homograph
+    attacks.
 
-    A username is 'dangerous' if it is mixed-script (as defined by
-    Unicode 'Script' property) and contains one or more characters
-    appearing in the Unicode Visually Confusable Characters file.
+    A username is 'dangerous' if it is mixed-script (as defined by Unicode 'Script'
+    property) and contains one or more characters appearing in the Unicode Visually
+    Confusable Characters file.
 
     """
     if not isinstance(value, str):
@@ -293,47 +289,41 @@ def validate_confusables(value):
 
 def validate_confusables_email(value):
     """
-    Validator which disallows 'dangerous' email addresses likely to
-    represent homograph attacks.
+    Validator which disallows 'dangerous' email addresses likely to represent
+    homograph attacks.
 
-    An email address is 'dangerous' if either the local-part or the
-    domain, considered on their own, are mixed-script and contain one
-    or more characters appearing in the Unicode Visually Confusable
-    Characters file.
+    An email address is 'dangerous' if either the local-part or the domain, considered
+    on their own, are mixed-script and contain one or more characters appearing in the
+    Unicode Visually Confusable Characters file.
 
     """
     # Email addresses are extremely difficult.
     #
-    # The current RFC governing syntax of email addresses is RFC 5322
-    # which, as the HTML5 specification succinctly states, "defines a
-    # syntax for e-mail addresses that is simultaneously too strict
-    # ... too vague ...  and too lax ...  to be of practical use".
+    # The current RFC governing syntax of email addresses is RFC 5322 which, as the
+    # HTML5 specification succinctly states, "defines a syntax for e-mail addresses that
+    # is simultaneously too strict ... too vague ...  and too lax ...  to be of
+    # practical use".
     #
-    # In order to be useful, this validator must consider only the
-    # addr-spec portion of an email address, and must examine the
-    # local-part and the domain of that addr-spec
-    # separately. Unfortunately, there are no good general-purpose
-    # Python libraries currently available (that the author of
-    # django-registration is aware of), supported on all versions of
-    # Python django-registration supports, which can reliably provide
-    # an RFC-complient parse of either a full address or an addr-spec
+    # In order to be useful, this validator must consider only the addr-spec portion of
+    # an email address, and must examine the local-part and the domain of that addr-spec
+    # separately. Unfortunately, there are no good general-purpose Python libraries
+    # currently available (that the author of django-registration is aware of),
+    # supported on all versions of Python django-registration supports, which can
+    # reliably provide an RFC-complient parse of either a full address or an addr-spec
     # which allows the local-part and domain to be treated separately.
     #
-    # To work around this shortcoming, RegistrationForm applies the
-    # HTML5 email validation rule, which HTML5 admits (in section
-    # 4.10.5.1.5) is a "willful violation" of RFC 5322, to the
-    # submitted email address. This will reject many technically-valid
-    # but problematic email addresses, including those which make use
-    # of comments, or which embed otherwise-illegal characters via
-    # quoted-string.
+    # To work around this shortcoming, RegistrationForm applies the HTML5 email
+    # validation rule, which HTML5 admits (in section 4.10.5.1.5) is a "willful
+    # violation" of RFC 5322, to the submitted email address. This will reject many
+    # technically-valid but problematic email addresses, including those which make use
+    # of comments, or which embed otherwise-illegal characters via quoted-string.
     #
-    # That in turn allows this validator to take a much simpler
-    # approach: it considers any value containing exactly one '@'
-    # (U+0040) to be an addr-spec, and consders everything prior to
-    # the '@' to be the local-part and everything after to be the
-    # domain, and performs validation on them. Any value not
-    # containing exactly one '@' is assumed not to be an addr-spec,
-    # and is thus "accepted" by not being validated at all.
+    # That in turn allows this validator to take a much simpler approach: it considers
+    # any value containing exactly one '@' (U+0040) to be an addr-spec, and consders
+    # everything prior to the '@' to be the local-part and everything after to be the
+    # domain, and performs validation on them. Any value not containing exactly one '@'
+    # is assumed not to be an addr-spec, and is thus "accepted" by not being validated
+    # at all.
     if value.count("@") != 1:
         return
     local_part, domain = value.split("@")

@@ -1,8 +1,7 @@
 """
 URLs used in the unit tests for django-registration.
 
-You should not attempt to use these URLs in any sort of real or
-development environment.
+You should not attempt to use these URLs in any sort of real or development environment.
 
 """
 

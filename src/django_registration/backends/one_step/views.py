@@ -1,6 +1,5 @@
 """
-A one-step (user signs up and is immediately active and logged in)
-workflow.
+A one-step (user signs up and is immediately active and logged in) workflow.
 
 """
 
@@ -17,9 +16,9 @@ User = get_user_model()
 
 class RegistrationView(BaseRegistrationView):
     """
-    Registration via the simplest possible process: a user supplies a
-    username, email address and password (the bare minimum for a
-    useful account), and is immediately signed up and logged in.
+    Registration via the simplest possible process: a user supplies a username,
+    email address and password (the bare minimum for a useful account), and is
+    immediately signed up and logged in.
 
     """
 

@@ -20,18 +20,14 @@ from . import signals
 from .exceptions import ActivationError
 from .forms import RegistrationForm
 
-USER_MODEL_MISMATCH = """
-You are attempting to use the registration view {view}
-with the form class {form},
-but the model used by that form ({form_model}) is not
-your Django installation's user model ({user_model}).
+USER_MODEL_MISMATCH = """You are attempting to use the registration view {view} with
+the form class {form}, but the model used by that form ({form_model}) is not your Django
+installation's user model ({user_model}).
 
-Most often this occurs because you are using a custom user model, but
-forgot to specify a custom registration form class for it. Specifying
-a custom registration form class is required when using a custom user
-model. Please see django-registration's documentation on custom user
-models for more details.
-"""
+Most often this occurs because you are using a custom user model, but forgot to specify
+a custom registration form class for it. Specifying a custom registration form class is
+required when using a custom user model. Please see django-registration's documentation
+on custom user models for more details. """
 
 
 class RegistrationView(FormView):
@@ -48,8 +44,8 @@ class RegistrationView(FormView):
     @method_decorator(sensitive_post_parameters())
     def dispatch(self, *args, **kwargs):
         """
-        Check that user signup is allowed before even bothering to
-        dispatch or do other processing.
+        Check that user signup is allowed before even bothering to dispatch or do
+        other processing.
 
         """
         if not self.registration_allowed():
@@ -60,15 +56,13 @@ class RegistrationView(FormView):
         """
         Returns an instance of the form to be used in this view.
 
-        This is an override of the base version of this method in
-        Django's FormMixin, to immediately and loudly break if the
-        model of this view's form class is not the user model Django
-        has been configured to use.
+        This is an override of the base version of this method in Django's FormMixin, to
+        immediately and loudly break if the model of this view's form class is not the
+        user model Django has been configured to use.
 
-        Most often this will be the case because Django has been
-        configured to use a custom user model, but the developer has
-        forgotten to also configure an appropriate custom registration
-        form to match it.
+        Most often this will be the case because Django has been configured to use a
+        custom user model, but the developer has forgotten to also configure an
+        appropriate custom registration form to match it.
 
         """
         # pylint: disable=protected-access
@@ -92,10 +86,9 @@ class RegistrationView(FormView):
         Return the URL to redirect to after successful redirection.
 
         """
-        # This is overridden solely to allow django-registration to
-        # support passing the user account as an argument; otherwise,
-        # the base FormMixin implementation, which accepts no
-        # arguments, could be called and end up raising a TypeError.
+        # This is overridden solely to allow django-registration to support passing the
+        # user account as an argument; otherwise, the base FormMixin implementation,
+        # which accepts no arguments, could be called and end up raising a TypeError.
         return super().get_success_url()
 
     def form_valid(self, form):
@@ -107,16 +100,16 @@ class RegistrationView(FormView):
 
     def registration_allowed(self):
         """
-        Override this to enable/disable user registration, either
-        globally or on a per-request basis.
+        Override this to enable/disable user registration, either globally or on a
+        per-request basis.
 
         """
         return getattr(settings, "REGISTRATION_OPEN", True)
 
     def register(self, form):
         """
-        Implement user-registration logic here. Access to both the
-        request and the registration form is available here.
+        Implement user-registration logic here. Access to both the request and the
+        registration form is available here.
 
         """
         raise NotImplementedError
@@ -140,9 +133,8 @@ class ActivationView(TemplateView):
 
     def get(self, *args, **kwargs):
         """
-        The base activation logic; subclasses should leave this method
-        alone and implement activate(), which is called from this
-        method.
+        The base activation logic; subclasses should leave this method alone and
+        implement activate(), which is called from this method.
 
         """
         extra_context = {}

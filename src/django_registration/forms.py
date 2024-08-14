@@ -1,10 +1,9 @@
 """
 Forms and validation code for user registration.
 
-Note that all of these forms assume your user model is similar in
-structure to Django's default User class. If your user model is
-significantly different, you may need to write your own form class;
-see the documentation for notes on custom user models with
+Note that all of these forms assume your user model is similar in structure to Django's
+default User class. If your user model is significantly different, you may need to write
+your own form class; see the documentation for notes on custom user models with
 django-registration.
 
 """
@@ -25,13 +24,12 @@ class RegistrationForm(UserCreationForm):
     """
     Form for registering a new user account.
 
-    Validates that the requested username is not already in use, and
-    requires the password to be entered twice to catch typos.
+    Validates that the requested username is not already in use, and requires the
+    password to be entered twice to catch typos.
 
-    Subclasses should feel free to add any additional validation they
-    need, but should take care when overriding ``save()`` to respect
-    the ``commit=False`` argument, as several registration workflows
-    will make use of it to create inactive user accounts.
+    Subclasses should feel free to add any additional validation they need, but should
+    take care when overriding ``save()`` to respect the ``commit=False`` argument, as
+    several registration workflows will make use of it to create inactive user accounts.
 
     """
 
@@ -74,8 +72,8 @@ class RegistrationForm(UserCreationForm):
 
 class RegistrationFormCaseInsensitive(RegistrationForm):
     """
-    Subclass of ``RegistrationForm`` enforcing case-insensitive
-    uniqueness of usernames.
+    Subclass of ``RegistrationForm`` enforcing case-insensitive uniqueness of
+    usernames.
 
     """
 
@@ -90,8 +88,8 @@ class RegistrationFormCaseInsensitive(RegistrationForm):
 
 class RegistrationFormTermsOfService(RegistrationForm):
     """
-    Subclass of ``RegistrationForm`` which adds a required checkbox
-    for agreeing to a site's Terms of Service.
+    Subclass of ``RegistrationForm`` which adds a required checkbox for agreeing to
+    a site's Terms of Service.
 
     """
 
@@ -104,8 +102,7 @@ class RegistrationFormTermsOfService(RegistrationForm):
 
 class RegistrationFormUniqueEmail(RegistrationForm):
     """
-    Subclass of ``RegistrationForm`` which enforces uniqueness of
-    email addresses.
+    Subclass of ``RegistrationForm`` which enforces uniqueness of email addresses.
 
     """
 

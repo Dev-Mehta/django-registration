@@ -339,7 +339,8 @@ def package_description(session: nox.Session) -> None:
 @nox.session(python=["3.12"], tags=["packaging"])
 def package_manifest(session: nox.Session) -> None:
     """
-    Check that the set of files in the package matches the set under version control.
+    Check that the set of files in the package matches the set under version
+    control.
 
     """
     session.install("check-manifest")

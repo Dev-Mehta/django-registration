@@ -16,8 +16,8 @@ from django.utils.translation import gettext_lazy as _
 
 class CustomUser(AbstractBaseUser):
     """
-    A model for use in testing django-registration's support for
-    custom user models. Do not use this in your own projects.
+    A model for use in testing django-registration's support for custom user
+    models. Do not use this in your own projects.
 
     """
 

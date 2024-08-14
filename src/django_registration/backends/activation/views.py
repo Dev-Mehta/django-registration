@@ -1,7 +1,6 @@
 """
-A two-step (registration followed by activation) workflow, implemented
-by emailing an HMAC-verified timestamped activation token to the user
-on signup.
+A two-step (registration followed by activation) workflow, implemented by emailing
+an HMAC-verified timestamped activation token to the user on signup.
 
 """
 
@@ -25,12 +24,12 @@ REGISTRATION_SALT = getattr(settings, "REGISTRATION_SALT", "registration")
 
 class RegistrationView(BaseRegistrationView):
     """
-    Register a new (inactive) user account, generate an activation key
-    and email it to the user.
+    Register a new (inactive) user account, generate an activation key and email it
+    to the user.
 
-    This is different from the model-based activation workflow in that
-    the activation key is the username, signed using Django's
-    TimestampSigner, with HMAC verification on activation.
+    This is different from the model-based activation workflow in that the activation
+    key is the username, signed using Django's TimestampSigner, with HMAC verification
+    on activation.
 
     """
 
@@ -85,8 +84,8 @@ class RegistrationView(BaseRegistrationView):
 
     def send_activation_email(self, user):
         """
-        Send the activation email. The activation key is the username,
-        signed using TimestampSigner.
+        Send the activation email. The activation key is the username, signed using
+        TimestampSigner.
 
         """
         activation_key = self.get_activation_key(user)
@@ -97,8 +96,7 @@ class RegistrationView(BaseRegistrationView):
             context=context,
             request=self.request,
         )
-        # Force subject to a single line to avoid header-injection
-        # issues.
+        # Force subject to a single line to avoid header-injection issues.
         subject = "".join(subject.splitlines())
         message = render_to_string(
             template_name=self.email_body_template,
@@ -110,9 +108,8 @@ class RegistrationView(BaseRegistrationView):
 
 class ActivationView(BaseActivationView):
     """
-    Given a valid activation key, activate the user's
-    account. Otherwise, show an error message stating the account
-    couldn't be activated.
+    Given a valid activation key, activate the user's account. Otherwise, show an
+    error message stating the account couldn't be activated.
 
     """
 
@@ -137,9 +134,9 @@ class ActivationView(BaseActivationView):
 
     def validate_key(self, activation_key):
         """
-        Verify that the activation key is valid and within the
-        permitted activation time window, returning the username if
-        valid or raising ``ActivationError`` if not.
+        Verify that the activation key is valid and within the permitted activation
+        time window, returning the username if valid or raising ``ActivationError`` if
+        not.
 
         """
         # pylint: disable=raise-missing-from
@@ -161,9 +158,8 @@ class ActivationView(BaseActivationView):
 
     def get_user(self, username):
         """
-        Given the verified username, look up and return the
-        corresponding user account if it exists, or raising
-        ``ActivationError`` if it doesn't.
+        Given the verified username, look up and return the corresponding user
+        account if it exists, or raising ``ActivationError`` if it doesn't.
 
         """
         # pylint: disable=invalid-name,raise-missing-from

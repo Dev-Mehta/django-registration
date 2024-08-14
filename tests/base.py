@@ -81,8 +81,8 @@ class _AssertSignalNotSentContext(_AssertSignalSentContext):
 @override_settings(ACCOUNT_ACTIVATION_DAYS=7, REGISTRATION_OPEN=True)
 class RegistrationTestCase(TestCase):
     """
-    Base class for test cases, defining valid data for registering a
-    user account and looking up the account after creation.
+    Base class for test cases, defining valid data for registering a user account
+    and looking up the account after creation.
 
     """
 
@@ -132,9 +132,8 @@ class RegistrationTestCase(TestCase):
 
 class WorkflowTestCase(RegistrationTestCase):
     """
-    Base class for the test cases which exercise the built-in
-    workflows, including logic common to all of them (and which needs
-    to be tested for each one).
+    Base class for the test cases which exercise the built-in workflows, including
+    logic common to all of them (and which needs to be tested for each one).
 
     """
 
@@ -162,8 +161,8 @@ class WorkflowTestCase(RegistrationTestCase):
 
     def test_registration_get(self):
         """
-        HTTP ``GET`` to the registration view uses the appropriate
-        template and populates a registration form into the context.
+        HTTP ``GET`` to the registration view uses the appropriate template and
+        populates a registration form into the context.
 
         """
         resp = self.client.get(reverse("django_registration_register"))
@@ -224,8 +223,7 @@ class WorkflowTestCase(RegistrationTestCase):
 
 class ActivationTestCase(WorkflowTestCase):
     """
-    Base class for testing the built-in workflows which involve an
-    activation step.
+    Base class for testing the built-in workflows which involve an activation step.
 
     """
 
@@ -282,9 +280,8 @@ class ActivationTestCase(WorkflowTestCase):
     @modify_settings(INSTALLED_APPS={"remove": ["django.contrib.sites"]})
     def test_registration_no_sites(self):
         """
-        Registration still functions properly when
-        ``django.contrib.sites`` is not installed; the fallback will
-        be a ``RequestSite`` instance.
+        Registration still functions properly when ``django.contrib.sites`` is not
+        installed; the fallback will be a ``RequestSite`` instance.
 
         """
         with self.assertSignalSent(signals.user_registered):

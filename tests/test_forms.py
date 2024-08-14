@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 """
 Exercise django-registration's built-in form classes.
 
