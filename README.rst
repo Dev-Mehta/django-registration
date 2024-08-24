@@ -21,5 +21,5 @@ Get started
 
 To get up and running quickly, `install django-registration <https://django-registration.readthedocs.io/en/latest/install.html#install>`_, then read the `quick start guide <https://django-registration.readthedocs.io/en/latest/quickstart.html#quickstart>`_, which describes the steps necessary to configure django-registration for the built-in workflows. For more detailed information, including how to customize the registration process (and support for alternate registration systems), read through the documentation listed below.
 
-To get started, check out `the documentation
-<https://django-registration.readthedocs.io/>`_.
+Check out the detailed `documentation
+<https://django-registration.readthedocs.io/>`_. for getting further
